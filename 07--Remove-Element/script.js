@@ -5,20 +5,18 @@ const array = [1, 2, 3, 2, 2, 4, 5];
 const value = 2;
 
 /**
- * Solution 1:
+ * Solution 2:
  *  113/113 test cases passed
- *  Runtime: 86ms
- *  Memory Usage: 42.2MB
+ *  Runtime: 77ms
+ *  Memory Usage: 42.1MB
  */
 const removeElement = function (array, value) {
-    let newLength = array.length;
-    for (let i = 0; i < newLength; i++) {
-        if (array[i] === value) {
-            array[i] += array[newLength - 1]
-            array[newLength - 1] = array[i] - array[newLength - 1];
-            array[i] = array[i] - array[newLength - 1];
-            newLength--;
-            i--;
+    let newLength = 0;
+    for (let i = 0, j = 0; i < array.length; i++) {
+        if (array[i] !== value) {
+            array[j] = array[i];
+            j++;
+            newLength++;
         }
     }
     return newLength;
