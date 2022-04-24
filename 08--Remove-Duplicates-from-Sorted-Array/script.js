@@ -3,23 +3,21 @@
 const array = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
 
 /**
- * Solution 1:
+ * Solution 2:
  *  361/361 test cases padded
- *  Runtime: 100ms
- *  Memory Usage: 44.4MB
+ *  Runtime: 83ms
+ *  Memory Usage: 45MB
  */
 const removeDuplicates = function (array) {
-    let newLength = 1;
-    let temp = array[0];
-    for (let i = 1, j = 1; i < array.length; i++) {
-        if (array[i] !== temp) {
-            temp = array[i];
-            array[j] = array[i];
-            j++;
-            newLength++;
+    if (array.length === 0) return 0;
+    let i = 0;
+    for (let j = 1; j < array.length; j++) {
+        if (array[j] !== array[i]) {
+            i++;
+            array[i] = array[j];
         }
     }
-    return newLength;
+    return i + 1;
 }
 
 const newLength = removeDuplicates(array);
