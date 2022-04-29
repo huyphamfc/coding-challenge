@@ -8,6 +8,10 @@
  * Solution 1:
  *  Runtime: 91 ms
  *  Memory Usage: 45.6 MB
+ * 
+ * Solution 2:
+ *  Runtime: 65 ms
+ *  Memory Usage: 45.1 MB
  */
 
 
@@ -27,5 +31,17 @@ const replaceElements = (array) => {
     array[array.length - 1] = -1;
 }
 
-replaceElements(array);
+const replaceElements_2 = (array) => {
+    if (array.length === 0) return;
+    for (let i = 0; i < array.length - 1; i++) {
+        array[i] = array[i + 1];
+        for (let j = i + 2; j < array.length; j++) {
+            if (array[j] > array[i]) array[i] = array[j];
+        }
+    }
+    array[array.length - 1] = -1;
+}
+
+// replaceElements(array);
+// replaceElements_2(array);
 console.log(array);
